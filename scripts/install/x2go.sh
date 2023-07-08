@@ -45,7 +45,9 @@ EOF
     mkdir -m 700 /root/.gnupg
     gpg --no-default-keyring --keyring /usr/share/keyrings/x2go-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E1F958385BFE2B6E >> ${log} 2>&1
     apt_update
+if ! [[ $release == bookworm ]]; then
     apt_install x2go-keyring
+fi
 fi
 
 apt_install x2goserver x2goserver-xsession pulseaudio
